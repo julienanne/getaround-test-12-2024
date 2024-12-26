@@ -1,17 +1,13 @@
-require_relative '../../level1/conf'
+require_relative 'support/helper'
 
-expected_file_path = "#{ABSOLUTE_ROOT_PATH}level1/data/expected_output.json"
+expected_file_path = File.join(File.dirname(__FILE__), "../../level1/data/input.json")
 
 expected_output = File.read(expected_file_path)
 
-require "#{ABSOLUTE_ROOT_PATH}level1/main.rb" # Direct execution
+require File.expand_path(File.join(File.dirname(__FILE__), "../../level1/main.rb"))
 
-output_file_path = "#{ABSOLUTE_ROOT_PATH}level1/data/output.json"
+output_file_path = File.join(File.dirname(__FILE__), "../../level1/data/input.json")
 
 output = File.read(output_file_path)
 
-if output == expected_output
-  puts "GREEN"
-else
-  puts "RED"
-end
+assert output == expected_output
